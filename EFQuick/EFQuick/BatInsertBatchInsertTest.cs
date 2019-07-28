@@ -8,18 +8,18 @@ namespace EFQuick
 {
     class BatchInsertTest
     {
-        static readonly string StrConnMsg = "server=.;database=CarSYS;uid=sa;pwd=123456WU";
+        static readonly string StrConnMsg = System.Configuration.ConfigurationManager.AppSettings["connectionstring"].ToString();
         static readonly long totalRow = 1000000;
         static readonly int getRow = 1000;
-        //static void Main1(string[] args)
-        //{
-        //    InsertOne();
-        //    //InsertTwo();
-        //    //InsertThree();
-        //    //InsertFour();
-        //    Console.WriteLine("插入数据结束");
-        //    Console.ReadLine();
-        //}
+        static void Main1(string[] args)
+        {
+            InsertOne();
+            //InsertTwo();
+            //InsertThree();
+            //InsertFour();
+            Console.WriteLine("插入数据结束");
+            Console.ReadLine();
+        }
         #region 方式一
         static void InsertOne()
         {
