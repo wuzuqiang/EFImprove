@@ -6,20 +6,20 @@ using System.Text;
 
 namespace EFQuick
 {
-    class BatInsert
+    class BatchInsertTest
     {
-        static readonly string StrConnMsg = "server=.;database=CarSYS;uid=sa;pwd=1127";
+        static readonly string StrConnMsg = "server=.;database=CarSYS;uid=sa;pwd=123456WU";
         static readonly long totalRow = 1000000;
         static readonly int getRow = 1000;
-        static void Main(string[] args)
-        {
-            InsertOne();
-            //InsertTwo();
-            //InsertThree();
-            //InsertFour();
-            Console.WriteLine("插入数据结束");
-            Console.ReadLine();
-        }
+        //static void Main1(string[] args)
+        //{
+        //    InsertOne();
+        //    //InsertTwo();
+        //    //InsertThree();
+        //    //InsertFour();
+        //    Console.WriteLine("插入数据结束");
+        //    Console.ReadLine();
+        //}
         #region 方式一
         static void InsertOne()
         {
@@ -164,4 +164,15 @@ namespace EFQuick
         }
         #endregion
     }
+    /**
+     * create database CarSYS;    
+go    
+use CarSYS;    
+go 
+CREATE TABLE Product(
+Id UNIQUEIDENTIFIER PRIMARY KEY,
+NAME VARCHAR(50) NOT NULL,
+Price DECIMAL(18,2) NOT NULL
+)
+     * */
 }
