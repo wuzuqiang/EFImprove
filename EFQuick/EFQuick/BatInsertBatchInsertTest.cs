@@ -8,7 +8,7 @@ namespace EFQuick
 {
     public class BatchInsertTest
     {
-        static readonly string StrConnMsg = System.Configuration.ConfigurationManager.AppSettings["CodeFirstApp"].ToString();
+        static readonly string StrConnMsg = System.Configuration.ConfigurationManager.ConnectionStrings["CodeFirstApp"].ToString();
         static readonly long totalRow = 1000000;
         static readonly int getRow = 1000;
         public static void Main1(string[] args)
@@ -28,7 +28,7 @@ namespace EFQuick
 
             using (SqlConnection conn = new SqlConnection(StrConnMsg)) //using中会自动Open和Close 连接。
             {
-                string sql = "INSERT INTO Product(Id,Name,Price) VALUES(newid(),@p,@d)";
+                string sql = "INSERT INTO Products(Id,Name,Price) VALUES(newid(),@p,@d)";
                 conn.Open();
                 for (int i = 0; i < totalRow; i++)
                 {
@@ -38,7 +38,7 @@ namespace EFQuick
                         cmd.Parameters.AddWithValue("@d", i);
                         sw.Start();
                         cmd.ExecuteNonQuery();
-                        Console.WriteLine(string.Format("插入一条记录，已耗时{0}毫秒", sw.ElapsedMilliseconds));
+                        //Console.WriteLine(string.Format("插入一条记录，已耗时{0}毫秒", sw.ElapsedMilliseconds));
                     }
                     if (i == getRow)
                     {
@@ -47,7 +47,8 @@ namespace EFQuick
                     }
                 }
             }
-            Console.WriteLine(string.Format("插入{0}条记录，每{4}条的插入时间是{1}毫秒,预估总得插入时间是{2}毫秒，{3}分钟", totalRow, sw.ElapsedMilliseconds, ((sw.ElapsedMilliseconds / getRow) * totalRow), GetMinute((sw.ElapsedMilliseconds / getRow * totalRow)), getRow));
+            Console.WriteLine(string.Format("插入{0}条记录，每{4}条的插入时间是{1}毫秒,预估总得插入时间是{2}毫秒，{3}分钟", totalRow, sw.ElapsedMilliseconds
+                , ((sw.ElapsedMilliseconds / getRow) * totalRow), GetMinute((sw.ElapsedMilliseconds / getRow * totalRow)), getRow));
         }
         static int GetMinute(long l)
         {
@@ -64,7 +65,7 @@ namespace EFQuick
             using (SqlConnection conn = new SqlConnection(StrConnMsg))
             {
                 SqlBulkCopy bulkCopy = new SqlBulkCopy(conn);
-                bulkCopy.DestinationTableName = "Product";
+                bulkCopy.DestinationTableName = "Products";
                 bulkCopy.BatchSize = dt.Rows.Count;
                 conn.Open();
                 sw.Start();
@@ -104,7 +105,7 @@ namespace EFQuick
 
             using (SqlConnection conn = new SqlConnection(StrConnMsg))
             {
-                string sql = "INSERT INTO Product(Id,Name,Price) select Id,Name,Price from @TempTb";
+                string sql = "INSERT INTO Products(Id,Name,Price) select Id,Name,Price from @TempTb";
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     SqlParameter catParam = cmd.Parameters.AddWithValue("@TempTb", dt);
@@ -145,7 +146,7 @@ namespace EFQuick
                 for (int j = 0; j < totalRow / getRow; j++)
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("INSERT INTO Product(Id,Name,Price) VALUES");
+                    sb.Append("INSERT INTO Products(Id,Name,Price) VALUES");
                     using (SqlCommand cmd = new SqlCommand())
                     {
 
@@ -169,7 +170,7 @@ namespace EFQuick
 go    
 use CarSYS;    
 go 
-CREATE TABLE Product(
+CREATE TABLE Products(
 Id UNIQUEIDENTIFIER PRIMARY KEY,
 NAME VARCHAR(50) NOT NULL,
 Price DECIMAL(18,2) NOT NULL
