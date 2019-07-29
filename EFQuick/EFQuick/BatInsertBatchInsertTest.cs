@@ -6,12 +6,12 @@ using System.Text;
 
 namespace EFQuick
 {
-    class BatchInsertTest
+    public class BatchInsertTest
     {
-        static readonly string StrConnMsg = System.Configuration.ConfigurationManager.AppSettings["connectionstring"].ToString();
+        static readonly string StrConnMsg = System.Configuration.ConfigurationManager.AppSettings["defaultConn"].ToString();
         static readonly long totalRow = 1000000;
         static readonly int getRow = 1000;
-        static void Main1(string[] args)
+        public static void Main1(string[] args)
         {
             InsertOne();
             //InsertTwo();

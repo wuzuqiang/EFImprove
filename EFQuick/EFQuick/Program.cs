@@ -8,5 +8,9 @@ namespace EFQuick
 {
     class Program
     {
+        static void Main(string[] args)
+        {
+            BatchInsertTest.Main1(args);
+        }
     }
 }
