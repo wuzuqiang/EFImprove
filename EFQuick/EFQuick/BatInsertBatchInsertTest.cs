@@ -8,15 +8,15 @@ namespace EFQuick
 {
     public class BatchInsertTest
     {
-        static readonly string StrConnMsg = System.Configuration.ConfigurationManager.AppSettings["defaultConn"].ToString();
+        static readonly string StrConnMsg = System.Configuration.ConfigurationManager.AppSettings["CodeFirstApp"].ToString();
         static readonly long totalRow = 1000000;
         static readonly int getRow = 1000;
         public static void Main1(string[] args)
         {
             InsertOne();
-            //InsertTwo();
-            //InsertThree();
-            //InsertFour();
+            InsertTwo();
+            InsertThree();
+            InsertFour();
             Console.WriteLine("插入数据结束");
             Console.ReadLine();
         }

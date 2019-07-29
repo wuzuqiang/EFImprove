@@ -60,6 +60,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\HistoryOriginalOrder.cs" />
+    <Compile Include="Model\HistoryOriginalOrderBatch.cs" />
+    <Compile Include="Model\OriginalOrderBatch.cs" />
+    <Compile Include="Model\OriginalOrder.cs" />
+    <Compile Include="Model\HistoryOriginalOrderDetail.cs" />
+    <Compile Include="Model\OriginalOrderDetail.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
