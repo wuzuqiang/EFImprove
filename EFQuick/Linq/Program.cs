@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Fusion.Context.Model;
+
 
 namespace Linq
 {
@@ -10,6 +12,9 @@ namespace Linq
     {
         static void Main(string[] args)
         {
+            Console.WriteLine((new ExeTestData()).Fun());
+            Console.Read();
+            return;
             int[] intAry1 = { 5, 15, 23, 30, 33, 40 };//创建整数数组 intAry1 作为数据源
             int[] intAry2 = { 10, 20, 30, 50, 60, 70, 80 };//创建整数数组 intAry2 作为数据源
                                                            //查询 query1 使用 join 子句从两个数据源获取数据
