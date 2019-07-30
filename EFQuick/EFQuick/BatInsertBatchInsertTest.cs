@@ -14,8 +14,8 @@ namespace EFQuick
         public static void Main1(string[] args)
         {
             InsertOne();
-            InsertTwo();
-            InsertThree();
+            //InsertTwo();
+            //InsertThree();
             InsertFour();
             Console.WriteLine("插入数据结束");
             Console.ReadLine();
