@@ -10,8 +10,8 @@ namespace CodeFirst.Model
     public class Product
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = new Guid();
         public string Name { get; set; }
-        public string Price { get; set; }
+        public Decimal Price { get; set; }
     }
 }
