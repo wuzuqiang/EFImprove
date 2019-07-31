@@ -42,20 +42,21 @@ namespace CodeFirst
             {
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
-                #region //BulkInsert
-                //#region
-                //context.Configuration.AutoDetectChangesEnabled = false;
-                //List<Product> products = new List<Product>();
-                //for (int i = 0; i < 10000; i++)
-                //{
-                //    Product product = new Product();
-                //    product.Name = "Name" + i;
-                //    product.Price = Convert.ToDecimal(i);
-                //    products.Add(product);
-                //}
-                //context.BulkInsert(products);
-                //context.BulkSaveChanges();
-                //#endregion
+                #region BulkInsert
+                #region
+                context.Configuration.AutoDetectChangesEnabled = false;
+                List<Product> products = new List<Product>();
+                for (int i = 0; i < 10000; i++)
+                {
+                    Product product = new Product();
+                    product.Id = System.Guid.NewGuid();
+                    product.Name = "Name" + i;
+                    product.Price = Convert.ToDecimal(i);
+                    products.Add(product);
+                }
+                context.BulkInsert(products);
+                context.BulkSaveChanges();
+                #endregion
                 #endregion
                 sw.Stop();
                 string s = string.Format("插入10000行数据，用了{0}毫秒\n", sw.ElapsedMilliseconds);
@@ -63,22 +64,22 @@ namespace CodeFirst
 
                 sw = new Stopwatch();
                 sw.Start();
-
                 #region 方法二（原生EF）
                 #region
-                #endregion
                 context.Configuration.AutoDetectChangesEnabled = false;// 解决批量性能问题
                 context.Configuration.ValidateOnSaveEnabled = false;// 解决“对一个或多个实体的验证失败。”
                 List<Product> products1 = new List<Product>();
                 for (int i = 0; i < 10; i++)
                 {
                     Product product = new Product();
+                    product.Id = System.Guid.NewGuid();
                     product.Name = "Name" + i;
                     product.Price = Convert.ToDecimal(i);
                     products1.Add(product);
                     context.Entry<Product>(product).State = EntityState.Added;
                 }
                 context.SaveChanges();
+                #endregion
                 #endregion
                 sw.Stop();
                 s += string.Format("插入10000行数据，用了{0}毫秒\n", sw.ElapsedMilliseconds);

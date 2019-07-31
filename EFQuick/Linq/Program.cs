@@ -12,6 +12,10 @@ namespace Linq
     {
         static void Main(string[] args)
         {
+        }
+
+        private void Fun1()
+        {
             Console.WriteLine((new ExeTestData()).Fun());
             Console.Read();
             return;
@@ -26,7 +30,7 @@ namespace Linq
             select new { VAL1 = val1, VAL2GRP = grp };
 
             IList<Person> people = new List<Person>();
-            for(int i = 0; i < 100; i++)
+            for (int i = 0; i < 100; i++)
             {
                 Person person = new Person();
                 person.Name = "Name" + i;
@@ -36,10 +40,46 @@ namespace Linq
             var tempList = people.Where(a => a.Name.Contains("2"));
             const int pageSize = 10;
             int pageNum = 0;
-            while((pageNum)* pageSize < people.Count)
+            while ((pageNum) * pageSize < people.Count)
             {
-                var a = people.Skip((pageNum++)*pageSize).Take(pageSize).ToList();
+                var a = people.Skip((pageNum++) * pageSize).Take(pageSize).ToList();
             }
+        }
+
+        private void Fun2()
+        {
+            Guid batchId = System.Guid.NewGuid();
+            List<ProductHistoryModel> list1 = new List<ProductHistoryModel>();
+            for (int i = 0; i < 4; i++)
+            {
+                ProductHistoryModel model = new ProductHistoryModel();
+                model.ProductCode = "productCode" + i;
+                model.OriginalOrderBatchId = batchId;
+                model.ProductName = "productName" + i;
+                model.PieceBarcode = "piecebarcode" + i;
+                model.BarBarcode = "barcode" + i;
+                model.Abnormity = false;
+                if (i % 2 == 0)
+                    model.Abnormity = true;
+                model.Price = i;
+                list1.Add(model);
+            }
+            List<ProductHistoryModel> list_1 = new List<ProductHistoryModel>();
+            for (int i = 0; i < 4; i++)
+            {
+                ProductHistoryModel model = new ProductHistoryModel();
+                model.ProductCode = "productCode" + i;
+                model.OriginalOrderBatchId = batchId;
+                model.ProductName = "productName" + i;
+                model.PieceBarcode = "piecebarcode" + i;
+                model.BarBarcode = "barcode" + i;
+                model.Abnormity = false;
+                if (i % 2 == 0)
+                    model.Abnormity = true;
+                model.Price = i;
+                list_1.Add(model);
+            }
+            var a = from d in list1 join from m in list_1
         }
     }
     class Person
