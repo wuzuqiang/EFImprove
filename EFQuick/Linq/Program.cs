@@ -79,7 +79,7 @@ namespace Linq
                 model.Price = i;
                 list_1.Add(model);
             }
-            var a = from d in list1 join from m in list_1
+            //var a = from d in list1 join from m in list_1
         }
     }
     class Person
