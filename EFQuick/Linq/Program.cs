@@ -12,6 +12,7 @@ namespace Linq
     {
         static void Main(string[] args)
         {
+            Fun2();
         }
 
         private void Fun1()
@@ -46,7 +47,7 @@ namespace Linq
             }
         }
 
-        private void Fun2()
+        private static void Fun2()
         {
             Guid batchId = System.Guid.NewGuid();
             List<ProductHistoryModel> list1 = new List<ProductHistoryModel>();
@@ -78,6 +79,15 @@ namespace Linq
                     model.Abnormity = true;
                 model.Price = i;
                 list_1.Add(model);
+            }
+            ProductHistorySummaryModel productHistorySummaryModel = new ProductHistorySummaryModel();
+            productHistorySummaryModel.productHistoryModels = list_1;
+            List<ProductHistorySummaryModel> productHistorySummaryModels = new List<ProductHistorySummaryModel>();
+            productHistorySummaryModels.Add(productHistorySummaryModel);
+            var a = productHistorySummaryModels.SelectMany(p => p.productHistoryModels);
+            foreach(var f in a)
+            {
+
             }
             //var a = from d in list1 join from m in list_1
         }
