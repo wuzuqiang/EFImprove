@@ -12,7 +12,7 @@ namespace Linq
     {
         static void Main(string[] args)
         {
-            Fun2();
+            ShowInnerJoin();
         }
 
         private void Fun1()
@@ -45,6 +45,62 @@ namespace Linq
             {
                 var a = people.Skip((pageNum++) * pageSize).Take(pageSize).ToList();
             }
+        }
+
+        private static void ShowInnerJoin()
+        {
+            int[] intAry1 = { 5, 15, 25, 30, 33, 40 };//创建整数数组 intAry1 作为数据源
+            int[] intAry2 = { 10, 20, 30, 50, 60, 70, 80 };//创建整数数组 intAry2 作为数据源
+                                                           //查询 query1 使用 join 子句从两个数据源获取数据
+                                                           //演示内部联接的使用
+            var query1 =
+            from val1 in intAry1
+            join val2 in intAry2 on val1*2 equals val2
+            select new { VAL1 = val1, VAL2 = val2 };
+            var query2 =
+            from val1 in intAry1
+            join val2 in intAry2 on val1 * 3 equals val2
+            select new { VAL1 = val1, VAL2 = val2 };
+        }
+
+        private void ShowAllJoin()
+        {
+            #region //
+//            #region
+//            1、左连接：
+//            var LeftJoin = from emp in ListOfEmployees
+//                           join dept in ListOfDepartment
+//                           on emp.DeptID equals dept.ID into JoinedEmpDept
+//                           from dept in JoinedEmpDept.DefaultIfEmpty()
+//                           select new
+//                           {
+//                               EmployeeName = emp.Name,
+//                               DepartmentName = dept != null ? dept.Name : null
+//                           };
+
+//            2、右连接：
+//var RightJoin = from dept in ListOfDepartment
+//                join employee in ListOfEmployees
+//                on dept.ID equals employee.DeptID into joinDeptEmp
+//                from employee in joinDeptEmp.DefaultIfEmpty()
+//                select new
+//                {
+//                    EmployeeName = employee != null ? employee.Name : null,
+//                    DepartmentName = dept.Name
+//                };
+
+//            3、内连接：
+// var query = from t in entitiy.TB_GCGL_ADA_USER
+//             join p in entitiy.TB_GCGL_ZY_ZYK
+//             on t.ETPRS_CODE equals p.ETPRS_CODE
+//             select new TB_USER_ZYK
+//             {
+//                 USER_ID = t.USER_ID,
+//                 USER_NAME = t.USER_NAME,
+//                 USER_PASSWORD = t.USER_PASSWORD,
+//             };
+//            #endregion
+#endregion
         }
 
         private static void Fun2()
@@ -85,6 +141,7 @@ namespace Linq
             List<ProductHistorySummaryModel> productHistorySummaryModels = new List<ProductHistorySummaryModel>();
             productHistorySummaryModels.Add(productHistorySummaryModel);
             var a = productHistorySummaryModels.SelectMany(p => p.productHistoryModels);
+            var f1 = productHistorySummaryModels.Any(j => j.productHistoryModels.Any());
             foreach(var f in a)
             {
 

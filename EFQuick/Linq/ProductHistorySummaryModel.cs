@@ -9,5 +9,6 @@ namespace Linq
     public class ProductHistorySummaryModel
     {
         public ICollection<ProductHistoryModel> productHistoryModels = new List<ProductHistoryModel>();
+        public string SummaryName { get; set; }
     }
 }
