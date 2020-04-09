@@ -12,7 +12,8 @@ namespace Linq
     {
         static void Main(string[] args)
         {
-            ShowInnerJoin();
+            //ShowInnerJoin();
+            Fun2();
         }
 
         private void Fun1()
@@ -29,6 +30,14 @@ namespace Linq
             join val2 in intAry2 on val1 % 5 equals val2 % 15 into val2Grp
             from grp in val2Grp.DefaultIfEmpty()
             select new { VAL1 = val1, VAL2GRP = grp };
+
+
+            //右连接？
+            var query002 =
+            from val1 in intAry1
+            join val2 in intAry2 on val1 % 5 equals val2 % 15 into val2Grp
+            from grp in val2Grp.DefaultIfEmpty()
+            select new { VAL2GRP = grp, VAL1= val2Grp};
 
             IList<Person> people = new List<Person>();
             for (int i = 0; i < 100; i++)
@@ -107,6 +116,9 @@ namespace Linq
         {
             Guid batchId = System.Guid.NewGuid();
             List<ProductHistoryModel> list1 = new List<ProductHistoryModel>();
+            List<ProductHistoryModel> list_1 = new List<ProductHistoryModel>();
+            var temp1 = list_1.All(s => s.ProductCode == "2332");
+            #region 添加数据进list1、list_1
             for (int i = 0; i < 4; i++)
             {
                 ProductHistoryModel model = new ProductHistoryModel();
@@ -121,7 +133,7 @@ namespace Linq
                 model.Price = i;
                 list1.Add(model);
             }
-            List<ProductHistoryModel> list_1 = new List<ProductHistoryModel>();
+            var temp = list1.All(s => s.ProductCode == "2323");
             for (int i = 0; i < 4; i++)
             {
                 ProductHistoryModel model = new ProductHistoryModel();
@@ -136,6 +148,7 @@ namespace Linq
                 model.Price = i;
                 list_1.Add(model);
             }
+            #endregion
             ProductHistorySummaryModel productHistorySummaryModel = new ProductHistorySummaryModel();
             productHistorySummaryModel.productHistoryModels = list_1;
             List<ProductHistorySummaryModel> productHistorySummaryModels = new List<ProductHistorySummaryModel>();
