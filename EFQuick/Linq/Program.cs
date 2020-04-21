@@ -125,8 +125,8 @@ namespace Linq
 //                 USER_PASSWORD = t.USER_PASSWORD,
 //             };
 //            #endregion
-#endregion
-}
+            #endregion
+        }
         private static void Test多表连接查询join()
         {
             //Console.WriteLine((new ExeTestData()).Fun());
@@ -230,6 +230,7 @@ namespace Linq
                     i++;
                 }
             }
+            #endregion
             #region group by
             #region
             {

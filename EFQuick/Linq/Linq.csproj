@@ -46,10 +46,9 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Class2.cs" />
+    <Compile Include="models.cs" />
     <Compile Include="ProductHistoryModel.cs" />
     <Compile Include="ProductHistorySummaryModel.cs" />
-    <Compile Include="models.cs" />
-    <Compile Include="OriginalOrderProductHistoryModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestData.cs" />
