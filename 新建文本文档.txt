@@ -1,9 +1,8 @@
-        
 CreateTime
 FinishTime
 InBatch
-InventoryBillNo
 InventoryUser
+PalletNo
 RealBarcodes
 RealLocationCode
 RealLocationName
@@ -34,4 +33,5 @@ StartTime
 StockInventoryTaskDetailStatus
 StockInventoryTaskNo
 StorageSequence
+UniqueId
 UpdateTime
