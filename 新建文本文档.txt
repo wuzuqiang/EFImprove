@@ -1,7 +1,9 @@
 CreateTime
 FinishTime
 InBatch
+InventoryBillNo
 InventoryUser
+PalletNo
 RealBarcodes
 RealLocationCode
 RealLocationName
@@ -30,6 +32,8 @@ RowVersion
 SerialNumber
 StartTime
 StockInventoryTaskDetailStatus
+StockInventoryTaskDetailStatusName
 StockInventoryTaskNo
 StorageSequence
+UniqueId
 UpdateTime
