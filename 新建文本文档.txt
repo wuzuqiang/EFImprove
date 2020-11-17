@@ -1,8 +1,6 @@
 CreateTime
 FinishTime
 InBatch
-InventoryBillDetailStatus
-InventoryBillNo
 InventoryUser
 RealBarcodes
 RealLocationCode
