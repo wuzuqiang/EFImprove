@@ -14,10 +14,10 @@ namespace Linq
         {
             //ShowInnerJoin();
             Fun2();
-            //初步使用Linq();
-            Fun2();
-            Test多表连接查询join();
-            结果后插入行号();
+            ////初步使用Linq();
+            //Fun2();
+            //Test多表连接查询join();
+            //结果后插入行号();
             Console.ReadLine();
         }
 
@@ -213,27 +213,30 @@ namespace Linq
                 model.Price = i;
                 list_1.Add(model);
             }
-            {
-                int i = 0;
-                var queryResult = from d in list1
-                                  join m in list_1
-                                      on d.OriginalOrderBatchId equals m.OriginalOrderBatchId
-                                  select new ProductHistoryModel
-                                  {
-                                      ProductCode = d.ProductCode,
-                                      PieceBarcode = m.ProductCode
-                                  };
-                Console.WriteLine("分组后的结果为：");
-                foreach (var item in queryResult)
-                {
-                    Console.WriteLine("行数" + i + "级别：" + item.ProductCode + "  个数：" + item.PieceBarcode);
-                    i++;
-                }
-            }
-            #endregion
-            #region group by
-            #region
-            {
+			#endregion
+			var a = list1.Any(any => any.ProductName== "productName1");
+			Console.WriteLine(a);
+			return;
+			{
+				int i = 0;
+				var queryResult = from d in list1
+								  join m in list_1
+									  on d.OriginalOrderBatchId equals m.OriginalOrderBatchId
+								  select new ProductHistoryModel
+								  {
+									  ProductCode = d.ProductCode,
+									  PieceBarcode = m.ProductCode
+								  };
+				Console.WriteLine("分组后的结果为：");
+				foreach (var item in queryResult)
+				{
+					Console.WriteLine("行数" + i + "级别：" + item.ProductCode + "  个数：" + item.PieceBarcode);
+					i++;
+				}
+			}
+			#region group by
+			#region
+			{
 
                 var queryResult = from e in list1
                                   group e by e.OriginalOrderBatchId into g
