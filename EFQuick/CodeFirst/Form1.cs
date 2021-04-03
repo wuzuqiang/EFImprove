@@ -81,6 +81,7 @@ namespace CodeFirst
 			using (var context = new EfPerformanceContext())
 			{
 				Product product = new Product();
+				product.Id = Guid.NewGuid();
 				product.Name = "productName01";
 				product.Price = 1.01m;
 				context.Products.Add(product);
