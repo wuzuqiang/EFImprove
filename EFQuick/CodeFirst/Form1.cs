@@ -22,18 +22,7 @@ namespace CodeFirst
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-            using (var context = new EfPerformanceContext())
-            {
-                if(context.Database.CreateIfNotExists())
-                {
-                    label1.Text = "数据库创建成功";
-                }
-                else
-                {
-                    label1.Text = "数据库已存在！";
-                }
-            }
+        {	
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -89,6 +78,22 @@ namespace CodeFirst
 		private void button2_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			//初始化数据库，数据库是否存在，如果不确认是否存在，可以先点击尝试创建数据库
+			using (var context = new EfPerformanceContext())
+			{
+				if (context.Database.CreateIfNotExists())
+				{
+					label1.Text = "数据库创建成功";
+				}
+				else
+				{
+					label1.Text = "数据库已存在！";
+				}
+			}
 		}
 	}
 }
