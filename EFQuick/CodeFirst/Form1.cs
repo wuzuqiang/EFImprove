@@ -77,7 +77,15 @@ namespace CodeFirst
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-
+			//插入数据到一个数据表中
+			using (var context = new EfPerformanceContext())
+			{
+				Product product = new Product();
+				product.Name = "productName01";
+				product.Price = 1.01m;
+				context.Products.Add(product);
+				context.SaveChanges();
+			}
 		}
 
 		private void button3_Click(object sender, EventArgs e)
