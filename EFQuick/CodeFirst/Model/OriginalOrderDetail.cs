@@ -27,6 +27,6 @@ namespace CodeFirst.Model
         public DateTime UpdateTime { get; set; }
         public byte[] RowVersion { get; set; }
 
-        public virtual OriginalOrder OriginalOrder { get; private set; }
-    }
+        public virtual OriginalOrder OriginalOrder { get; private set; }    //数据库中会用OriginalOrderId来表示OriginalOrder子表，挺好的。这样就关联起来了
+	}
 }
