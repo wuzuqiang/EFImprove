@@ -85,5 +85,10 @@ namespace CodeFirst
                 s += string.Format("插入10000行数据，用了{0}毫秒\n", sw.ElapsedMilliseconds);
             }
         }
-    }
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
