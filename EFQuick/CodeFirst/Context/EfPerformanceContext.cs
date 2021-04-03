@@ -14,5 +14,6 @@ namespace CodeFirst.Context
             :base("name=CodeFirstApp")
         { }
         public DbSet<Product> Products { get; set; }
-    }
+		public DbSet<OriginalOrder> OriginalOrders { get; set; }
+	}
 }
